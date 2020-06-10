@@ -8,49 +8,20 @@ import pandas as pd
 from subprocess import check_output
 
 dfb = pd.read_csv('https://raw.githubusercontent.com/bchap90210/bchap90210/Data-Files/acs2017_census_tract_data.csv')
-print(df.columns)
-print(df)
- 
-# Creating copy of data
+
 cenData = dfb
-print(cenData.columns)
-print(cenData)
-type(cenData)
 
 stateP = cenData[['State','TotalPop','Hispanic', 'White', 'Black', 'Native', 'Asian', 'Pacific','Poverty', 'ChildPoverty', 'Professional', 'Service', 'Office','Construction','Production','Drive','Carpool','Transit','Walk','OtherTransp','WorkAtHome', 'PrivateWork', 'PublicWork', 'SelfEmployed', 'FamilyWork', 'Unemployment']]
-
 
 percentages = ['Hispanic', 'White', 'Black', 'Native', 'Asian', 'Pacific','Poverty', 'ChildPoverty', 'Professional', 'Service', 'Office','Construction','Production','Drive','Carpool','Transit','Walk','OtherTransp','WorkAtHome', 'PrivateWork', 'PublicWork', 'SelfEmployed', 'FamilyWork', 'Unemployment']
 for i in percentages:
     stateP[i] = round(stateP['TotalPop'] * stateP[i] / 100) 
 
 stateDF = stateP.groupby(['State']).sum()
-print(stateDF)
-display(stateDF)
-print(stateDF.columns)
-print(stateDF.dtypes)
 
-
-import matplotlib.pyplot as plt
-#%matplotlib inline
-import seaborn as sns
-
-fig, ax = plt.subplots(figsize=(14,4))
-fig = sns.barplot(x=stateDF.index.values, y=stateDF['TotalPop'], data=stateDF)
-fig.axis(ymin=0, ymax=40000000)
-plt.xticks(rotation=90)
-
-
-##############################################################################
-#Set Up Kmeans for Clustering#################################################
-##############################################################################
 import sklearn
 from sklearn.cluster import KMeans
 import numpy as np
-#%matplotlib inline
-import matplotlib.pyplot as plt
-import seaborn as sns; sns.set()  # for plot styling
-# from pca import pca
 
 import pandas as pd
 from sklearn.datasets.samples_generator import make_blobs
@@ -66,16 +37,11 @@ y_kmeans = myKmeans.predict(stateDF)
 
 stateDF['cluster'] = y_kmeans
 
-
-
 ##############################################################################
 #Bringing in Covid Cases by State#############################################
 ##############################################################################
 # Reading in the data
 df2 = pd.read_csv('CoreData.csv', header=0, encoding='latin-1')
-print(df.columns)
-
-#df2 = df2.rename(columns = {'ï»¿State':'State'})
 
 stsumDF = df2
 
@@ -91,14 +57,6 @@ joinDF.sort_values(by=['Confirmed'])
 ###################### MANSO ########################
 
 joinDF = joinDF.groupby(["State"]).max().reset_index()
-
-
-
-
-
-
-
-
 
 
 ########################################################################################################################################################
