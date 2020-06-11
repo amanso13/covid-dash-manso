@@ -1,4 +1,9 @@
-pip install sklearn
+import subprocess
+import sys
+
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+install(sklearn)
 import pandas as pd
 import numpy as np
 
@@ -121,7 +126,7 @@ df_choro = df.sort_values(by="Date")
 # tmp_choro.write_html("Plotly/choro_ani.html")
 
 
-dfm = pd.read_csv("Global_Mobility_Report.csv")
+dfm = pd.read_csv("https://raw.githubusercontent.com/amanso13/covid-dash-manso/master/Global_Mobility_Report.csv")
 dfm = dfm.merge(df1[["State","State Abb"]],how="left",on="State")
 dfm.Date = pd.to_datetime(dfm.Date)
 dfm["State Abb"] = dfm["State Abb"].fillna("Avg")
@@ -136,7 +141,7 @@ mobtypes = list(dfm.columns[2:-1])
 tot_cases = sum(df1.Confirmed)
 tot_deaths = sum(df1.Deaths)
 
-pred = pd.read_csv("prophet_all.csv")
+pred = pd.read_csv("https://raw.githubusercontent.com/amanso13/covid-dash-manso/master/prophet_all.csv")
 pred.Date = pd.to_datetime(pred.Date)
 pred = pd.melt(pred, id_vars = ["Date"])
 pred[['State Abb','variable']] = pred.variable.str.split('_',expand=True)
