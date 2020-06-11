@@ -1,11 +1,6 @@
-##############################################################################
-#Reading in initial data######################################################
-##############################################################################
-
+pip install sklearn
 import pandas as pd
 import numpy as np
-import pandas as pd 
-from subprocess import check_output
 
 dfb = pd.read_csv('https://raw.githubusercontent.com/bchap90210/bchap90210/Data-Files/acs2017_census_tract_data.csv')
 
@@ -23,7 +18,6 @@ import sklearn
 from sklearn.cluster import KMeans
 import numpy as np
 
-import pandas as pd
 from sklearn.datasets.samples_generator import make_blobs
 from sklearn.cluster import KMeans
 
@@ -41,7 +35,7 @@ stateDF['cluster'] = y_kmeans
 #Bringing in Covid Cases by State#############################################
 ##############################################################################
 # Reading in the data
-df2 = pd.read_csv('CoreData.csv', header=0, encoding='latin-1')
+df2 = pd.read_csv('https://raw.githubusercontent.com/amanso13/covid-dash-manso/master/CoreData.csv', header=0, encoding='latin-1')
 
 stsumDF = df2
 
@@ -82,7 +76,7 @@ import numpy as np
 
 # In[Data Load and Prep]
 
-df = pd.read_csv("CoreData.csv")
+df = pd.read_csv("https://raw.githubusercontent.com/amanso13/covid-dash-manso/master/CoreData.csv")
 df = df.drop("Unnamed: 0", axis = 1)
 # Need to run Beau's code first
 df = df.merge(joinDF[['State', 'cluster', 'TotalPop']], how = "left", on = "State")
