@@ -145,8 +145,8 @@ pred = pred.merge(df1[['State Abb',"State"]],how='left',on='State Abb')
 app = dash.Dash(__name__)
 server = app.server
 app.layout = html.Div([
-    html.H1("VARIOUS CORN", style={'text-align':'center', 'font-size':64, 'margin-block-end':0, 'margin-block-start':0,'color':'#3E3D3C'}),
-    html.H2("COVID-19 | Dashboard", style={'text-align':'center', 'font-size':36, 'margin-block-end':5, 'margin-block-start':0,'color':'#D44500','border-bottom':'3px solid #6F777D'}),
+    html.H1("COVID-19 | Dashboard", style={'text-align':'center', 'font-size':64, 'margin-block-end':0, 'margin-block-start':0,'color':'#3E3D3C'}),
+    html.H2("A Deep Dive into the United States", style={'text-align':'center', 'font-size':36, 'margin-block-end':5, 'margin-block-start':0,'color':'#D44500','border-bottom':'3px solid #6F777D'}),
     html.Img(src="https://styleguide.ischool.syr.edu/img/logo-thumb-block-syracuse-white-gray.png", style={'float':'right', 'height':'7.5%','width':'6.5%', 'position':'relative', 'top':'-125px','right':'10px'}),
     
     html.Div([
