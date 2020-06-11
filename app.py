@@ -140,9 +140,9 @@ pred = pred.merge(df1[['State Abb',"State"]],how='left',on='State Abb')
 # In[Dashboard]
 
 ################ START APP ################
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+#external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+app = dash.Dash(__name__)
 server = app.server
 app.layout = html.Div([
     html.H1("VARIOUS CORN", style={'text-align':'center', 'font-size':64, 'margin-block-end':0, 'margin-block-start':0,'color':'#3E3D3C'}),
