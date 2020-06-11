@@ -88,9 +88,9 @@ myfeatures = list(df1.columns[5:-2])
 fig_clus = px.scatter_3d(df2, x = 'Confirmed', y = 'Total Population', z = 'Deaths', color='cluster', text = 'State Abb', opacity=0.8, color_discrete_sequence=['#D44500','#3E3D3C','#283189'])
 # fid_clus.write_html("Plotly/clus1.html")
 
-fig_rect = go.Figure(go.Scatter(x=[3,5,5,3], y=[1,1,2,2], fill="toself",fillcolor='#3E3D3C'))
-fig_rect.update_xaxes(range=[3,5],showgrid=False, zeroline = False, visible = False)
-fig_rect.update_yaxes(range=[1,2],showgrid=False, zeroline = False, visible = False)
+#fig_rect = go.Figure(go.Scatter(x=[3,5,5,3], y=[1,1,2,2], fill="toself",fillcolor='#3E3D3C'))
+#fig_rect.update_xaxes(range=[3,5],showgrid=False, zeroline = False, visible = False)
+#fig_rect.update_yaxes(range=[1,2],showgrid=False, zeroline = False, visible = False)
 #fig.write_html("Plotly/rect1.html")
 
 df_log = df[["State Abb","Date","Confirmed","Deaths"]]
@@ -129,11 +129,11 @@ pred = pd.melt(pred, id_vars = ["Date"])
 pred[['State Abb','variable']] = pred.variable.str.split('_',expand=True)
 pred = pred.merge(df1[['State Abb',"State"]],how='left',on='State Abb')
 
-pred_chart = px.line(pred, x='Date',y="value", color_discrete_sequence=["firebrick"])
-pred_chart.add_scatter(x=pred.Date,y=pred.AL_lower, mode='lines',name='Lower', line=dict(color="grey", dash="dot"))
-pred_chart.add_scatter(x=pred.Date,y=pred.AL_upper, mode='lines',name='Upper',fill='tonexty',line=dict(color="grey", dash="dot"))
-pred_chart.add_scatter(x=df.Date[df.State=="Alabama"],y=df.Confirmed[df.State=="Alabama"], mode='lines', name='Upper', line=dict(color="steelblue")).update_layout(margin=dict(l=10, r=10, t=10, b=10, pad=0), paper_bgcolor='rgba(232,234,235,.5)', plot_bgcolor='rgba(232,234,235,0)',geo=dict(bgcolor= 'rgba(0,0,0,0)'),showlegend=False)
-pred_chart.write_html("Plotly/pred1.html")
+#pred_chart = px.line(pred, x='Date',y="value", color_discrete_sequence=["firebrick"])
+#pred_chart.add_scatter(x=pred.Date,y=pred.AL_lower, mode='lines',name='Lower', line=dict(color="grey", dash="dot"))
+#pred_chart.add_scatter(x=pred.Date,y=pred.AL_upper, mode='lines',name='Upper',fill='tonexty',line=dict(color="grey", dash="dot"))
+#pred_chart.add_scatter(x=df.Date[df.State=="Alabama"],y=df.Confirmed[df.State=="Alabama"], mode='lines', name='Upper', line=dict(color="steelblue")).update_layout(margin=dict(l=10, r=10, t=10, b=10, pad=0), paper_bgcolor='rgba(232,234,235,.5)', plot_bgcolor='rgba(232,234,235,0)',geo=dict(bgcolor= 'rgba(0,0,0,0)'),showlegend=False)
+#pred_chart.write_html("Plotly/pred1.html")
 
 
 
