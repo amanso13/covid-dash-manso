@@ -1,9 +1,3 @@
-import subprocess
-import sys
-
-def install(package):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
-install(sklearn)
 import pandas as pd
 import numpy as np
 
@@ -19,21 +13,9 @@ for i in percentages:
 
 stateDF = stateP.groupby(['State']).sum()
 
-import sklearn
-from sklearn.cluster import KMeans
 import numpy as np
-
-from sklearn.datasets.samples_generator import make_blobs
-from sklearn.cluster import KMeans
-
-# Set up kmeans
-myKmeans = sklearn.cluster.KMeans(n_clusters=4)
-
-# Fit the Kmeans alghorithm
-result = myKmeans.fit(stateDF)
-
-y_kmeans = myKmeans.predict(stateDF)
-
+clusters = pd.read_csv("https://raw.githubusercontent.com/amanso13/covid-dash-manso/master/Clusters.csv")
+y_kmeans = clusters.Cluster
 stateDF['cluster'] = y_kmeans
 
 ##############################################################################
