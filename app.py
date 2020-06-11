@@ -15,7 +15,7 @@ stateDF = stateP.groupby(['State']).sum()
 
 import numpy as np
 clusters = pd.read_csv("https://raw.githubusercontent.com/amanso13/covid-dash-manso/master/Clusters.csv")
-y_kmeans = clusters.Cluster
+y_kmeans = clusters.Cluster.values
 stateDF['cluster'] = y_kmeans
 
 ##############################################################################
